@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Role {
+  id       Int    @id
+  roleName String
+  User     User[]
+}
+
+model User {
+  id        Int        @id
+  userName  String     @unique
+  firstName String?
+  lastName  String
+  email     String     @unique
+  password  String
+  role      Role       @relation(fields: [roleId], references: [id])
+  Progress  Progress[]
+  roleId    Int
+}
+
+model Exercise {
+  id           Int        @id
+  exerciseName String
+  Progress     Progress[]
+}
+
+model Set {
+  id             Int        @id
+  setNumber      Int
+  setWeight      Int
+  setRepitations Int
+  Progress       Progress[]
+}
+
+model Progress {
+  id         Int      @id
+  date       DateTime
+  set1Weight String
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  set        Set      @relation(fields: [setId], references: [id])
+  exerciseId Int
+  userId     Int
+  setId      Int
+}
