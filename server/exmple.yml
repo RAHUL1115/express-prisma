@@ -1,0 +1,36 @@
+penapi: 3.0.0
+info:
+  title: "Sample API"
+  description: "Sample Postgresql ORM API."
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:3000
+    description: Development Server
+  - url: http://api.postgresqllorm.com
+    description: Production Server
+
+paths:
+  /user:
+    get:
+      tags:
+        - user
+      summary: Show all users
+      description: Return sll users
+      operationId: /
+      requestBody:
+        description: Show all existent user
+      responses:
+        "200":
+          description: Successful data retrival
+    post:
+      tags:
+        - user
+      summary: Add new user
+      description: Add new user with details
+      operationId: insertUser
+      requestBody:
+        description: Add new user with details
+      responses:
+        "200":
+          description: Successful operation
