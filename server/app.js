@@ -1,7 +1,7 @@
 'use strict';
 const express = require("express");
 const cors = require("cors");
-const routes = require("./routes/routes");
+const routes = require("./api/v1/routes/routes/routes");
 
 const app = express();
 const port = process.env.PORT || 3000;
