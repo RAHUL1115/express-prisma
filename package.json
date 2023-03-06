@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "dev": "nodemon server/app.js"
+    "dev": "nodemon server/app.js -e yml,json,js"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-unless": "^2.1.3",
+    "jsonwebtoken": "^9.0.0",
     "prisma": "^4.10.1",
-    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2",
     "yaml": "^2.2.1",
     "yamljs": "^0.3.0"

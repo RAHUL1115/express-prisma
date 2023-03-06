@@ -1,20 +1,11 @@
 const express = require('express');
-const {login,register,forgot} = require('../controllers/authController')
+const jwt = require('../middlewares/jwt')
+const { login, register, forgot } = require('../controllers/authController')
 
 const auth = express.Router();
 
-/**
- * @swagger
- * 
- * /v1/auth/login:
- *  post:
- *      produces: application/json
- *      responses:
- *          200:
- *              description: Returns a mysterious string
- */
-auth.post('/login', login)
-auth.post('/register', register)
-auth.post('/forgot', forgot)
+auth.post('/login', jwt.authenticateCookie, login)
+auth.post('/register', jwt.authenticateCookie, register)
+auth.post('/forgot', jwt.authenticateCookie, forgot)
 
 module.exports = auth;

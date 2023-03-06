@@ -1,1 +1,1 @@
-module.exports.authService = require('./authController')
+module.exports.authController = require('./authController')
