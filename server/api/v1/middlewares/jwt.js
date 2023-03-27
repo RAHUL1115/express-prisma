@@ -1,7 +1,7 @@
 require("dotenv").config()
 const jwt = require("jsonwebtoken")
 
-class JwtToken {
+class Jwt {
     constructor(id, username, roleName) {
         this.credentialID = id
         this.username = username
@@ -38,4 +38,4 @@ class JwtToken {
 
 }
 
-module.exports = JwtToken
+module.exports = Jwt
