@@ -2,12 +2,14 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser')
+
 const swaggerUi = require("swagger-ui-express");
 const YAML = require('yamljs');
 const path = require('path');
+
+const v1 = require('./api/v1/components');
 const errorHandler = require('./api/v1/middlewares/error-handler');
 const notFound = require("./api/v1/middlewares/not-found");
-const v1 = require('./api/v1/routes');
 
 let port = process.env.PORT || 3000;
 let app = express();

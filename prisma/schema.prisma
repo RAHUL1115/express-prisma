@@ -12,31 +12,31 @@ datasource db {
 }
 
 model Role {
-  id       Int    @id
+  id       String    @id
   roleName String
   User     User[]
 }
 
 model User {
-  id        Int        @id
-  userName  String     @unique
+  id        String        @id
+  jwt  String     @unique
   firstName String?
   lastName  String
   email     String     @unique
   password  String
   role      Role       @relation(fields: [roleId], references: [id])
   Progress  Progress[]
-  roleId    Int
+  roleId    String
 }
 
 model Exercise {
-  id           Int        @id
+  id           String        @id
   exerciseName String
   Progress     Progress[]
 }
 
 model Set {
-  id             Int        @id
+  id             String        @id
   setNumber      Int
   setWeight      Int
   setRepitations Int
@@ -44,13 +44,13 @@ model Set {
 }
 
 model Progress {
-  id         Int      @id
+  id         String      @id
   date       DateTime
   set1Weight String
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
   set        Set      @relation(fields: [setId], references: [id])
-  exerciseId Int
-  userId     Int
-  setId      Int
+  exerciseId String
+  userId     String
+  setId      String
 }
