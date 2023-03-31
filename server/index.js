@@ -11,8 +11,9 @@ const v1 = require('./api/v1/components');
 const errorHandler = require('./api/v1/middlewares/error-handler');
 const notFound = require("./api/v1/middlewares/not-found");
 
-let port = process.env.PORT || 3000;
 let app = express();
+
+let PORT = process.env.PORT || 3000;
 
 // cors
 let corsOptions = {origin: '*',}
@@ -44,8 +45,8 @@ app.use(notFound);
 
 // star the server
 try {
-  app.listen(4004, () => {
-    console.log(`app listening to http://localhost:${port}`);
+  app.listen(PORT, () => {
+    console.log(`app listening to http://localhost:${PORT}`);
   });
 } catch (error) {
   console.error("Unable to connect to the database:", error);

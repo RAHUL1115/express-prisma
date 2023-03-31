@@ -27,6 +27,30 @@ class User {
     }
 
     /**
+    * @param {prisma} tx 
+    */
+    create(tx) {
+        let db = tx || prisma;
+
+        this.generateId();
+        this.generateJwt();
+
+        db.user.create({
+            data: this,
+        })
+    }
+
+    /**
+     * @param {prisma} tx 
+     */
+    update(tx) {
+        let db = tx || prisma;
+        db.user.update({
+            data: this,
+        })
+    }
+
+    /**
      * @param {prisma} tx 
      */
     static async get(tx,filter,limit) {
@@ -43,34 +67,10 @@ class User {
     /**
      * @param {prisma} tx 
      */
-    static delete(id, tx) {
+    static async delete(id, tx) {
         let db = tx || prisma;
         db.user.delete({
             where: { id: id },
-        })
-    }
-
-    /**
-    * @param {prisma} tx 
-    */
-    create(tx){
-        let db = tx || prisma; 
-
-        this.generateId();
-        this.generateJwt();
-
-        db.user.create({
-            data: this,
-        })
-    }
-
-    /**
-     * @param {prisma} tx 
-     */
-    update(tx){
-        let db = tx || prisma;
-        db.user.update({
-            data: this,
         })
     }
 }
