@@ -58,7 +58,10 @@ class User {
 
         let data = await db.user.findMany({
             where: filter,
-            take: limit
+            take: limit,
+            include: {
+                role: true,
+            }
         })
 
         return data;
@@ -83,3 +86,6 @@ class User {
 
 
 // module.exports = User;
+
+
+module.exports = User;

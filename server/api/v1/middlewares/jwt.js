@@ -1,18 +1,21 @@
 require("dotenv").config()
+const createHttpError = require("http-errors")
 const jwt = require("jsonwebtoken")
 
 class Jwt {
-    constructor(id, username, roleName) {
-        this.credentialID = id
-        this.username = username
+    constructor(jwtId, firstName, lastName, roleName) {
+        this.jwtId = jwtId
+        this.firstName = firstName
+        this.lastName = lastName
         this.roleName = roleName
     }
 
     createPayload() {
         return {
-            username: this.username,
-            credentialID: this.credentialID,
-            roleName: this.roleName
+            jwtId: this.jwtId,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            roleName: this.roleName,
         }
     }
 
@@ -25,7 +28,7 @@ class Jwt {
         let cookie = req.cookies
 
         if (!cookie) {
-            throw new Error("Session cookie not found. Please login")
+            throw new createHttpError(400,"Session cookie not found. Please login",{code:400})
         }
 
         try {
