@@ -21,7 +21,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
     "prisma": "^4.13.0",
-    "swagger-ui-express": "^4.6.2",
+    "swagger-ui-express": "^4.6.3",
     "throw-http-errors": "^4.0.1",
     "uuid": "^9.0.0",
     "yaml": "^2.2.2",
